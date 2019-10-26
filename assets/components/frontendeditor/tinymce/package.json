@@ -1,0 +1,52 @@
+{
+  "_from": "tinymce",
+  "_id": "tinymce@5.0.16",
+  "_inBundle": false,
+  "_integrity": "sha512-qXymNZmAR5fSp5Lp3mVMtHxpiTMvba7TV6wGFcyJP5eUGIhsPw+XkezjvWCFs7lrW+ti0YBBblJNzxG5/8ZtFg==",
+  "_location": "/tinymce",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "tinymce",
+    "name": "tinymce",
+    "escapedName": "tinymce",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/tinymce/-/tinymce-5.0.16.tgz",
+  "_shasum": "7cd34f1016d86fa281652ba02ca5026621dd7590",
+  "_spec": "tinymce",
+  "_where": "/www/modx.local/public_html/assets",
+  "author": {
+    "name": "Ephox Corporation"
+  },
+  "bugs": {
+    "url": "https://github.com/tinymce/tinymce/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Web based JavaScript HTML WYSIWYG editor control.",
+  "homepage": "https://github.com/tinymce/tinymce-dist#readme",
+  "keywords": [
+    "editor",
+    "wysiwyg",
+    "tinymce",
+    "richtext",
+    "javascript",
+    "html"
+  ],
+  "license": "LGPL-2.1",
+  "main": "tinymce.js",
+  "name": "tinymce",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tinymce/tinymce-dist.git"
+  },
+  "version": "5.0.16"
+}

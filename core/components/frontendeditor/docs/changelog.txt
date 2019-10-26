@@ -1,0 +1,3 @@
+Frontend Editor v1.0
+==============
+- Initial release.
