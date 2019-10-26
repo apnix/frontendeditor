@@ -5,7 +5,7 @@ Version: 1.0
 Author: Artemiy Titov <arien85@gmail.com>
 ---------------------------------------
 
-Frontend Editor is a simple plugin that allows you to edit content without going into the admin panel. It includes TinyMCE 5 for easy editing.
+Frontend Editor is a simple plugin that allows you to edit content without having to log in through the manager interface to do this. It includes TinyMCE 5 for easy editing.
 
 Features
 - In the current version, only editing the content field is supported.
