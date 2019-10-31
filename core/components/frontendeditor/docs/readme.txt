@@ -1,7 +1,7 @@
 ---------------------------------------
-Frontend Editor v1.01
+Frontend Editor v1.03
 ---------------------------------------
-Version: 1.01
+Version: 1.03
 Author: Artemiy Titov <arien85@gmail.com>
 ---------------------------------------
 

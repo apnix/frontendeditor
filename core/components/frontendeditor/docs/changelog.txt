@@ -1,5 +1,6 @@
-Frontend Editor v1.01
+Frontend Editor v1.03
 ==============
+- TinyMCE default settings changed
 - Add checking browser "Quirks Mode"
 
 Frontend Editor v1.0

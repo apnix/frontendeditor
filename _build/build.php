@@ -10,7 +10,7 @@ $config =  [
 
     'name' => 'Frontend Editor',
     'name_lower' => 'frontendeditor',
-    'version' => '1.01',
+    'version' => '1.03',
     'release' => 'pl',
     'install' => true,
 
@@ -30,7 +30,7 @@ $config =  [
     'settings' =>[
         'tinymce_init_default' => [
             'xtype' => 'textfield',
-            'value' => "{\"menubar\":true,\"inline\":true,\"browser_spellcheck\":true,\"contextmenu\":false,\"plugins\":[\"wordcount table lists link media autolink image imagetools codesample code paste\"],\"toolbar\":\"undo redo | bold italic | forecolor backcolor | codesample |  alignleft aligncenter alignright alignjustify | bullist numlist | link image | code \",\"imagetools_toolbar\":\"rotateleft rotateright | flipv fliph | editimage imageoptions\"}",
+            'value' => "{\"menubar\":true,\"image_title\":true,\"image_caption\":true,\"convert_urls\":false,\"inline\":true,\"browser_spellcheck\":true,\"contextmenu\":false,\"plugins\":[\"wordcount table lists link media autolink image imagetools codesample code paste\"],\"toolbar\":\"undo redo | bold italic | forecolor backcolor | codesample |  alignleft aligncenter alignright alignjustify | bullist numlist | link unlink | image insert | code \",\"imagetools_toolbar\":\" editimage | imageoptions\"}",
             'area' => 'frontendeditor',
         ],
         'upload_file_name' => [
@@ -43,7 +43,7 @@ $config =  [
             'value' => "images/Article Pictures/",
             'area' => 'frontendeditor',
         ],
-        'update' => false
+        'update' => true
     ]
 
 ];
