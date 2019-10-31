@@ -96,8 +96,6 @@ var FrontendEditor = function () {
                     return;
                 }
 
-                currentTarget.parentElement.children[1].style.visibility = "visible";
-
                 currentTarget.disabled = true;
                 document.querySelector(".frontendeditor-topbabr").classList.add("frontendeditor-loading-data");
                 fe.loadContent(function () {
