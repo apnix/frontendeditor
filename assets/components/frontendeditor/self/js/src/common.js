@@ -17,7 +17,7 @@ class FrontendEditor {
         this.lexicon = frontendEditorLexicon;
 
         if(this.options.editPermission !== `1`){
-            document.querySelector(`.frontendeditor-topbabr`).classList.add(`noEditPermission`);
+            document.querySelector(`.frontendeditor-button-edit`).disabled = true;
         }else{
             const fe = this;
             fe.editableAreas = [...document.querySelectorAll(fe.options.selector)];
@@ -50,12 +50,12 @@ class FrontendEditor {
                         el.innerHTML = fileds[el.dataset.frontendeditor];
                         el.dataset.frontendeditorLoadData = `true`;
                     }else{
-                        this.constructor.messageBoxShow().innerHTML = `${this.lexicon['error_content_for']} ${el.dataset.frontendeditor}`;
+                        this.constructor.messageBoxShow(5000, "error").innerHTML = `${this.lexicon['error_content_for']} ${el.dataset.frontendeditor}`;
                         error = true;
                     }
                 }.bind(this));
             } else {
-                this.constructor.messageBoxShow().innerHTML = `${this.lexicon['error_content_load']}<br>${currentTarget.status}`;
+                this.constructor.messageBoxShow(5000, "error").innerHTML = `${this.lexicon['error_content_load']}<br>${currentTarget.status}`;
                 error = true;
             }
             if(!error){
@@ -66,6 +66,13 @@ class FrontendEditor {
 
     edit({currentTarget}) {
         const fe = this;
+
+        // checking browser "Quirks Mode"
+        if(document.compatMode === "BackCompat"){
+            this.constructor.messageBoxShow(3600000, "error").innerHTML = `${this.lexicon['error_browser_back_compat']} <a href="${this.options.assetsPath}self/doc/quirksmode.txt" target="_blank">${this.lexicon['see_more']}</a>`;
+            document.querySelector(`.frontendeditor-button-edit`).disabled = true;
+            return;
+        }
 
         currentTarget.parentElement.children[1].style.visibility = `visible`;
 
@@ -126,7 +133,7 @@ class FrontendEditor {
                 this.constructor.messageBoxShow().innerHTML = this.lexicon['exit_saving'];
                 this.saved = true;
             } else {
-                this.constructor.messageBoxShow().innerHTML = `${this.lexicon['error']}<br>${currentTarget.status === 200 ? currentTarget.response.success : currentTarget.status}`;
+                this.constructor.messageBoxShow(5000, "error").innerHTML = `${this.lexicon['error']}<br>${currentTarget.status === 200 ? currentTarget.response.success : currentTarget.status}`;
             }
         }.bind(this))
     }
@@ -139,12 +146,14 @@ class FrontendEditor {
         xhr.send(data);
     }
 
-    static messageBoxShow() {
+    static messageBoxShow(timeout = 5000, addclass = "") {
         let messageBox = document.querySelector(`.frontendeditor-message-box`);
         messageBox.classList.add(`frontendeditor-box-show`);
+        if(addclass !== "") messageBox.classList.add(addclass);
         setTimeout(function () {
+            if(addclass !== "") messageBox.classList.remove(addclass);
             messageBox.classList.remove(`frontendeditor-box-show`);
-        }, 5000);
+        }, timeout);
         return messageBox;
     }
 

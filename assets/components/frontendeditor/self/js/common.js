@@ -23,7 +23,7 @@ var FrontendEditor = function () {
             this.lexicon = frontendEditorLexicon;
 
             if (this.options.editPermission !== "1") {
-                document.querySelector(".frontendeditor-topbabr").classList.add("noEditPermission");
+                document.querySelector(".frontendeditor-button-edit").disabled = true;
             } else {
                 var fe = this;
                 fe.editableAreas = [].concat(_toConsumableArray(document.querySelectorAll(fe.options.selector)));
@@ -61,12 +61,12 @@ var FrontendEditor = function () {
                             el.innerHTML = fileds[el.dataset.frontendeditor];
                             el.dataset.frontendeditorLoadData = "true";
                         } else {
-                            this.constructor.messageBoxShow().innerHTML = this.lexicon['error_content_for'] + " " + el.dataset.frontendeditor;
+                            this.constructor.messageBoxShow(5000, "error").innerHTML = this.lexicon['error_content_for'] + " " + el.dataset.frontendeditor;
                             error = true;
                         }
                     }.bind(this));
                 } else {
-                    this.constructor.messageBoxShow().innerHTML = this.lexicon['error_content_load'] + "<br>" + currentTarget.status;
+                    this.constructor.messageBoxShow(5000, "error").innerHTML = this.lexicon['error_content_load'] + "<br>" + currentTarget.status;
                     error = true;
                 }
                 if (!error) {
@@ -80,6 +80,13 @@ var FrontendEditor = function () {
             var currentTarget = _ref2.currentTarget;
 
             var fe = this;
+
+            // checking browser "Quirks Mode"
+            if (document.compatMode === "BackCompat") {
+                this.constructor.messageBoxShow(3600000, "error").innerHTML = this.lexicon['error_browser_back_compat'] + " <a href=\"" + this.options.assetsPath + "self/doc/quirksmode.txt\" target=\"_blank\">" + this.lexicon['see_more'] + "</a>";
+                document.querySelector(".frontendeditor-button-edit").disabled = true;
+                return;
+            }
 
             currentTarget.parentElement.children[1].style.visibility = "visible";
 
@@ -140,7 +147,7 @@ var FrontendEditor = function () {
                     this.constructor.messageBoxShow().innerHTML = this.lexicon['exit_saving'];
                     this.saved = true;
                 } else {
-                    this.constructor.messageBoxShow().innerHTML = this.lexicon['error'] + "<br>" + (currentTarget.status === 200 ? currentTarget.response.success : currentTarget.status);
+                    this.constructor.messageBoxShow(5000, "error").innerHTML = this.lexicon['error'] + "<br>" + (currentTarget.status === 200 ? currentTarget.response.success : currentTarget.status);
                 }
             }.bind(this));
         }
@@ -156,11 +163,16 @@ var FrontendEditor = function () {
     }], [{
         key: "messageBoxShow",
         value: function messageBoxShow() {
+            var timeout = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 5000;
+            var addclass = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
             var messageBox = document.querySelector(".frontendeditor-message-box");
             messageBox.classList.add("frontendeditor-box-show");
+            if (addclass !== "") messageBox.classList.add(addclass);
             setTimeout(function () {
+                if (addclass !== "") messageBox.classList.remove(addclass);
                 messageBox.classList.remove("frontendeditor-box-show");
-            }, 5000);
+            }, timeout);
             return messageBox;
         }
     }, {

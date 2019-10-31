@@ -1,11 +1,13 @@
 ---------------------------------------
-Frontend Editor v1.0
+Frontend Editor v1.01
 ---------------------------------------
-Version: 1.0
+Version: 1.01
 Author: Artemiy Titov <arien85@gmail.com>
 ---------------------------------------
 
 Frontend Editor is a simple plugin that allows you to edit content without having to log in through the manager interface to do this. It includes TinyMCE 5 for easy editing.
+
+GitHub: https://github.com/apnix/frontendeditor
 
 Features
 - In the current version, only editing the content field is supported.
@@ -17,6 +19,10 @@ Install the extension. Add the data-frontendeditor="content" attribute to the el
     [[*content]]
 </div>
 
+System Requirements
+On those pages where you are going to use the editor, DOCTYPE should be indicated such as: <!DOCTYPE html>
+TinyMCE 5 should support your browser: https://www.tiny.cloud/docs/general-configuration-guide/system-requirements
+
 Additional settings
 frontendeditor.tinymce_init_default - TinyMCE configuration settings. For more details see: https://www.tiny.cloud/docs/
 frontendeditor.upload_path - image upload directory
@@ -25,6 +31,8 @@ frontendeditor.upload_file_name - processing the file name, can take the followi
 ======= Russian =======
 
 Frontend Editor это простой плагин который позволяет редактировать контент не заходя в админ панель. Он включает в себя TinyMCE 5 для удобного редактирования.
+
+GitHub: https://github.com/apnix/frontendeditor
 
 Особенности
 - В текущей версии поддерживается только редактирования поля контент.
@@ -35,6 +43,10 @@ Frontend Editor это простой плагин который позволя
 <div data-frontendeditor="content">
     [[*content]]
 </div>
+
+Системные требования
+На тех страницах где вы собираетесь использовать редактор должен быть указан DOCTYPE такой как: <!DOCTYPE html>
+TinyMCE 5 должен поддерживать ваш браузер: https://www.tiny.cloud/docs/general-configuration-guide/system-requirements
 
 Дополнительные настройки
 frontendeditor.tinymce_init_default - конфигурация TinyMCE подробнее смотрите: https://www.tiny.cloud/docs/

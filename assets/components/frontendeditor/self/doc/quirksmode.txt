@@ -1,0 +1,10 @@
+Error loading TinyMCE.
+
+If you encounter a TinyMCE loading error, this is most likely due to the fact that the page is missing
+<!DOCTYPE html> tag. Perhaps you intentionally use DOCTYPE to switch your browser to Quirks Mode,
+for example such as: <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"> If so, then you will not be able to run
+editor on pages with this tag.
+
+Additional Information:
+https://www.tiny.cloud/docs/general-configuration-guide/system-requirements/
+https://developer.mozilla.org/en-US/docs/Web/HTML/Quirks_Mode_and_Standards_Mode

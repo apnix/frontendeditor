@@ -1,3 +1,8 @@
+Frontend Editor v1.01
+==============
+- Add checking browser "Quirks Mode"
+
 Frontend Editor v1.0
 ==============
 - Initial release.
+

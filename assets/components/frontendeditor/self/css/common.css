@@ -47,6 +47,10 @@ body.frontendeditor-areas-highlight *[data-frontendeditor-load-data=true] {
     transition: opacity 0.6s ease-out;
 }
 
+.frontendeditor-message-box.error {
+    background: #ff8a8a;
+}
+
 .frontendeditor-message-box.frontendeditor-box-show {
     opacity: 1;
 }
@@ -105,10 +109,17 @@ body.frontendeditor-areas-highlight *[data-frontendeditor-load-data=true] {
     display: none;
 }
 
-.frontendeditor-loading-data .frontendeditor-button {
+.frontendeditor-loading-data .frontendeditor-button[disabled]{
     /*background-color: rgba(118, 216, 245, 0.42) !important;*/
     color: #b8b8b8;
+}
 
+.frontendeditor-button[disabled]{
+    color: #b8b8b8;
+}
+
+.frontendeditor-button[disabled]:hover {
+    background-color: rgb(245, 245, 245);
 }
 
 .frontendeditor-edit-mode .frontendeditor-button-edit {
