@@ -16,5 +16,6 @@ $_lang['frontendeditor.error_resource_id'] = 'Неверный id';
 $_lang['frontendeditor.error_resource'] = 'Ресурс не найден';
 $_lang['frontendeditor.error_browser_back_compat'] = '<b>Ошибка загрузки TinyMCE.</b> Бразуер работает в режиме Quirks Mode. Вероятнее всего это происходит из за того что на странице отсутствует тег DOCTYPE.';
 $_lang['frontendeditor.see_more'] = 'Смотрите подробнее.';
+$_lang['frontendeditor.error_no_editable_areas'] = 'Ни одной области для редактировани не найдено на этой странице.';
 
 

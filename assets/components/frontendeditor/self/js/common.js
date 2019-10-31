@@ -81,16 +81,23 @@ var FrontendEditor = function () {
 
             var fe = this;
 
-            // checking browser "Quirks Mode"
-            if (document.compatMode === "BackCompat") {
-                this.constructor.messageBoxShow(3600000, "error").innerHTML = this.lexicon['error_browser_back_compat'] + " <a href=\"" + this.options.assetsPath + "self/doc/quirksmode.txt\" target=\"_blank\">" + this.lexicon['see_more'] + "</a>";
-                document.querySelector(".frontendeditor-button-edit").disabled = true;
-                return;
-            }
-
-            currentTarget.parentElement.children[1].style.visibility = "visible";
-
             if (!fe.editingMode) {
+
+                // checking browser "Quirks Mode"
+                if (document.compatMode === "BackCompat") {
+                    this.constructor.messageBoxShow(3600000, "error").innerHTML = this.lexicon['error_browser_back_compat'] + " <a href=\"" + this.options.assetsPath + "self/doc/quirksmode.txt\" target=\"_blank\">" + this.lexicon['see_more'] + "</a>";
+                    document.querySelector(".frontendeditor-button-edit").disabled = true;
+                    return;
+                }
+
+                if (fe.editableAreas.length === 0) {
+                    this.constructor.messageBoxShow(10000, "error").innerHTML = this.lexicon['error_no_editable_areas'] + " ";
+                    document.querySelector(".frontendeditor-button-edit").disabled = true;
+                    return;
+                }
+
+                currentTarget.parentElement.children[1].style.visibility = "visible";
+
                 currentTarget.disabled = true;
                 document.querySelector(".frontendeditor-topbabr").classList.add("frontendeditor-loading-data");
                 fe.loadContent(function () {
