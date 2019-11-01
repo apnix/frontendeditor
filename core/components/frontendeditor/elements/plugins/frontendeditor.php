@@ -17,7 +17,7 @@ if($modx->user->isAuthenticated('mgr')){
         <link href="'.$frontendeditorAssetsPath.'self/css/common.css" rel="stylesheet">
         
         <script type="text/javascript" src="'.$frontendeditorAssetsPath.'tinymce/tinymce.js"></script>
-        <script type="text/javascript" src="'.$frontendeditorAssetsPath.'self/js/src/common.js"></script>
+        <script type="text/javascript" src="'.$frontendeditorAssetsPath.'self/js/common.js"></script>
 
         <script type="text/javascript">
           document.addEventListener("DOMContentLoaded", function() {
