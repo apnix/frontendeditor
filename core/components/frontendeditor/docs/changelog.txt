@@ -1,3 +1,7 @@
+Frontend Editor v1.04
+==============
+- Bug fixes
+
 Frontend Editor v1.03
 ==============
 - TinyMCE default settings changed

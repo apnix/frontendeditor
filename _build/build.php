@@ -10,7 +10,7 @@ $config =  [
 
     'name' => 'Frontend Editor',
     'name_lower' => 'frontendeditor',
-    'version' => '1.03',
+    'version' => '1.04',
     'release' => 'pl',
     'install' => true,
 
