@@ -46,13 +46,22 @@ class FrontendEditor {
                 let fileds = currentTarget.response.object;
                 this.editableAreas.forEach(function (el) {
                     el.id = this.constructor.generateUUID();
-                    if(el.dataset.frontendeditor in fileds) {
-                        el.innerHTML = fileds[el.dataset.frontendeditor];
+                    let options = el.dataset.frontendeditor.split(",");
+
+                    let filed = options[0].trim();
+                    el.dataset.frontendeditor = filed;
+                    if (filed in fileds) {
+                        el.innerHTML = fileds[filed];
                         el.dataset.frontendeditorLoadData = `true`;
-                    }else{
-                        this.constructor.messageBoxShow(5000, "error").innerHTML = `${this.lexicon['error_content_for']} ${el.dataset.frontendeditor}`;
+                    } else {
+                        this.constructor.messageBoxShow(5000, "error").innerHTML = `${this.lexicon['error_content_for']} ${filed}`;
                         error = true;
                     }
+
+                    if(1 in options) {
+                        el.dataset.frontendeditorEditor = options[1].trim();
+                    }
+
                 }.bind(this));
             } else {
                 this.constructor.messageBoxShow(5000, "error").innerHTML = `${this.lexicon['error_content_load']}<br>${currentTarget.status}`;
@@ -87,7 +96,15 @@ class FrontendEditor {
             fe.loadContent(function () {
                 fe.editableAreas.forEach(function (el) {
                     if(el.dataset.frontendeditorLoadData)
-                        fe.constructor.tinymceInit(el, fe);
+                        switch (el.dataset.frontendeditorEditor) {
+                            case 'simple':
+                                el.setAttribute('contenteditable',true);
+                                break;
+                            case 'tinymce':
+                            default:
+                                fe.constructor.tinymceInit(el, fe);
+                                break;
+                        }
                 });
                 fe.editingMode = true;
                 fe.saved = false;
@@ -99,6 +116,10 @@ class FrontendEditor {
         }else{
             if(fe.saved || !fe.hasChange() || confirm(fe.lexicon['exit_without_saving'])) {
                 tinymce.remove();
+                fe.editableAreas.forEach(function (el) {
+                    if(el.dataset.frontendeditorEditor === 'simple')
+                        el.removeAttribute('contenteditable');
+                });
                 fe.editingMode = false;
                 currentTarget.disabled = true;
                 document.querySelector(`.frontendeditor-topbabr`).classList.add(`frontendeditor-loading-data`);
