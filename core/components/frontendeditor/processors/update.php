@@ -24,8 +24,7 @@ if($resource_id && is_numeric($resource_id)){
 
         foreach ($scriptProperties as $key => $value) {
             if(mb_strpos($key, 'tv-') === 0) {
-                $test = mb_substr($key, 3);
-                $resource->setTVValue(mb_substr($key, 3), $value);
+                $resource->setTVValue(mb_substr($key, 3), urldecode($value));
             }
         }
 
