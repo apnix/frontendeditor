@@ -54,18 +54,18 @@ var FrontendEditor = function () {
 
                 var error = false;
                 if (currentTarget.status === 200 && currentTarget.response.success) {
-                    var fileds = currentTarget.response.object;
+                    var fields = currentTarget.response.object;
                     this.editableAreas.forEach(function (el) {
                         el.id = this.constructor.generateUUID();
                         var options = el.dataset.frontendeditor.split(",");
 
-                        var filed = options[0].trim();
-                        el.dataset.frontendeditor = filed;
-                        if (filed in fileds) {
-                            el.innerHTML = fileds[filed];
+                        var field = options[0].trim();
+                        el.dataset.frontendeditor = field;
+                        if (field in fields) {
+                            el.innerHTML = fields[field];
                             el.dataset.frontendeditorLoadData = "true";
                         } else {
-                            this.constructor.messageBoxShow(5000, "error").innerHTML = this.lexicon['error_content_for'] + " " + filed;
+                            this.constructor.messageBoxShow(5000, "error").innerHTML = this.lexicon['error_content_for'] + " " + field;
                             error = true;
                         }
 

@@ -43,18 +43,18 @@ class FrontendEditor {
         this._send(data, function ({currentTarget}) {
             let error = false;
             if (currentTarget.status === 200 && currentTarget.response.success) {
-                let fileds = currentTarget.response.object;
+                let fields = currentTarget.response.object;
                 this.editableAreas.forEach(function (el) {
                     el.id = this.constructor.generateUUID();
                     let options = el.dataset.frontendeditor.split(",");
 
-                    let filed = options[0].trim();
-                    el.dataset.frontendeditor = filed;
-                    if (filed in fileds) {
-                        el.innerHTML = fileds[filed];
+                    let field = options[0].trim();
+                    el.dataset.frontendeditor = field;
+                    if (field in fields) {
+                        el.innerHTML = fields[field];
                         el.dataset.frontendeditorLoadData = `true`;
                     } else {
-                        this.constructor.messageBoxShow(5000, "error").innerHTML = `${this.lexicon['error_content_for']} ${filed}`;
+                        this.constructor.messageBoxShow(5000, "error").innerHTML = `${this.lexicon['error_content_for']} ${field}`;
                         error = true;
                     }
 
