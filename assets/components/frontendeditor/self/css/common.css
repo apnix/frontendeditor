@@ -146,3 +146,8 @@ body.frontendeditor-areas-highlight *[data-frontendeditor-load-data=true]:focus,
 body.frontendeditor-areas-highlight *[data-frontendeditor-load-data=true]:hover {
     outline: 3px solid #2276d2;
 }
+
+body.frontendeditor-areas-highlight a[data-frontendeditor-load-data=true]:focus,
+body.frontendeditor-areas-highlight a[data-frontendeditor-load-data=true]:hover {
+    text-decoration: none;
+}

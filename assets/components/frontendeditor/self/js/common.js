@@ -52,12 +52,12 @@ var FrontendEditor = function () {
                 var firstOption = options[0].trim();
 
                 if (_this._isInt(firstOption)) {
-                    var field = void 0;
                     el.dataset.frontendeditorResourceId = firstOption;
+                    el.title = "ID: " + firstOption;
 
                     if (1 in options) {
-                        field = options[1].trim();
-                        el.dataset.frontendeditor = field;
+                        el.dataset.frontendeditor = options[1].trim();
+                        el.title = "ID: " + firstOption + " Filed: " + options[1].trim();
                     } else {
                         console.log(_this.lexicon['error_options_format'] + " " + options);
                         return;
@@ -77,7 +77,7 @@ var FrontendEditor = function () {
 
             this.editableAreas.forEach(function (elin) {
                 var fe = _this2;
-                elin.oninput = function (event) {
+                elin.oninput = function () {
                     fe.editableAreas.forEach(function (elout) {
                         if (elin.dataset.frontendeditorResourceId === elout.dataset.frontendeditorResourceId && elin.dataset.frontendeditor === elout.dataset.frontendeditor) {
                             elout.textContent = elin.textContent;

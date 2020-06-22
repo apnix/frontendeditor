@@ -43,12 +43,12 @@ class FrontendEditor {
             let firstOption = options[0].trim();
 
             if(this._isInt(firstOption)) {
-                let field;
                 el.dataset.frontendeditorResourceId = firstOption;
+                el.title = `ID: ${firstOption}`;
 
                 if (1 in options) {
-                    field = options[1].trim();
-                    el.dataset.frontendeditor = field;
+                    el.dataset.frontendeditor = options[1].trim();
+                    el.title = `ID: ${firstOption} Filed: ${options[1].trim()}`;
                 }else{
                     console.log(`${this.lexicon['error_options_format']} ${options}`)
                     return;
@@ -62,13 +62,14 @@ class FrontendEditor {
                     el.dataset.frontendeditorEditor = options[1].trim();
             }
 
+
         });
     }
 
     initEditableAreasEvents() {
         this.editableAreas.forEach((elin) => {
             const fe = this;
-            elin.oninput = function(event) {
+            elin.oninput = function() {
                 fe.editableAreas.forEach((elout) => {
                     if(elin.dataset.frontendeditorResourceId === elout.dataset.frontendeditorResourceId && elin.dataset.frontendeditor === elout.dataset.frontendeditor){
                         elout.textContent = elin.textContent;
