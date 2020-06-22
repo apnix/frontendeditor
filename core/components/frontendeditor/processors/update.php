@@ -19,14 +19,16 @@ if($resource_id && is_numeric($resource_id)){
     if($resource && $resource->checkPolicy('save')){
 
         $resource_data = $resource->toArray();
-        $resource_data['content'] = urldecode($scriptProperties['content']);
-        $resource_data['clearCache'] = true;
 
         foreach ($scriptProperties as $key => $value) {
+            if (in_array($key, ['content', 'pagetitle', 'longtitle', 'menutitle', 'description', 'introtext'])) {
+                $resource_data[$key] = urldecode($value);
+            }
             if(mb_strpos($key, 'tv-') === 0) {
                 $resource->setTVValue(mb_substr($key, 3), urldecode($value));
             }
         }
+        $resource_data['clearCache'] = true;
 
         $response = $modx->runProcessor(
             'resource/update',
