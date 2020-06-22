@@ -149,7 +149,7 @@ var FrontendEditor = function () {
         value: function hasChange() {
             var result = false;
             this.editableAreas.forEach(function (el) {
-                if (tinyMCE.get(el.id).undoManager.hasUndo()) result = true;
+                if (tinyMCE.get(el.id) && tinyMCE.get(el.id).undoManager.hasUndo()) result = true;
             });
             return result;
         }

@@ -138,7 +138,7 @@ class FrontendEditor {
     hasChange() {
         let result = false;
         this.editableAreas.forEach(function (el) {
-            if(tinyMCE.get(el.id).undoManager.hasUndo())
+            if(tinyMCE.get(el.id) && tinyMCE.get(el.id).undoManager.hasUndo())
                 result = true;
         });
         return result
