@@ -30,39 +30,84 @@ class FrontendEditor {
             [].forEach.call(document.querySelectorAll(`.frontendeditor-button-save`), function (el) {
                 el.addEventListener(`click`, fe.save.bind(fe));
             });
+
+            this.initOptions();
+            this.initEditableAreasEvents();
         }
+    }
+
+    initOptions() {
+        this.editableAreas.forEach((el) => {
+            el.id = this.constructor.generateUUID();
+            let options = el.dataset.frontendeditor.split(",");
+            let firstOption = options[0].trim();
+
+            if(this._isInt(firstOption)) {
+                let field;
+                el.dataset.frontendeditorResourceId = firstOption;
+
+                if (1 in options) {
+                    field = options[1].trim();
+                    el.dataset.frontendeditor = field;
+                }else{
+                    console.log(`${this.lexicon['error_options_format']} ${options}`)
+                    return;
+                }
+                if (2 in options)
+                    el.dataset.frontendeditorEditor = options[2].trim();
+            }else{
+                el.dataset.frontendeditorResourceId = this.options.id;
+                el.dataset.frontendeditor = firstOption;
+                if (1 in options)
+                    el.dataset.frontendeditorEditor = options[1].trim();
+            }
+
+        });
+    }
+
+    initEditableAreasEvents() {
+        this.editableAreas.forEach((elin) => {
+            const fe = this;
+            elin.oninput = function(event) {
+                fe.editableAreas.forEach((elout) => {
+                    if(elin.dataset.frontendeditorResourceId === elout.dataset.frontendeditorResourceId && elin.dataset.frontendeditor === elout.dataset.frontendeditor){
+                        elout.textContent = elin.textContent;
+                    }
+                });
+            }.bind(fe, elin);
+        });
     }
 
     loadContent($onloadFunction, $process = false) {
 
         let data = new FormData();
         data.append("action", "getall");
-        data.append("id", this.options.id);
+
+        this.editableAreas.forEach((el) => {
+            let id = el.dataset.frontendeditorResourceId;
+            if (!data.getAll("ids[]").includes(id))
+                data.append("ids[]", id);
+        });
+
         data.append("process", $process);
 
         this._send(data, function ({currentTarget}) {
             let error = false;
             if (currentTarget.status === 200 && currentTarget.response.success) {
-                let fields = currentTarget.response.object;
-                this.editableAreas.forEach(function (el) {
+                let objects = currentTarget.response.object;
+                this.editableAreas.forEach((el) => {
                     el.id = this.constructor.generateUUID();
-                    let options = el.dataset.frontendeditor.split(",");
+                        let id = el.dataset.frontendeditorResourceId;
+                        let field = el.dataset.frontendeditor;
 
-                    let field = options[0].trim();
-                    el.dataset.frontendeditor = field;
-                    if (field in fields) {
-                        el.innerHTML = fields[field];
-                        el.dataset.frontendeditorLoadData = `true`;
-                    } else {
-                        this.constructor.messageBoxShow(5000, "error").innerHTML = `${this.lexicon['error_content_for']} ${field}`;
-                        error = true;
-                    }
-
-                    if(1 in options) {
-                        el.dataset.frontendeditorEditor = options[1].trim();
-                    }
-
-                }.bind(this));
+                        if (field in objects[id]) {
+                            el.innerHTML = objects[id][field];
+                            el.dataset.frontendeditorLoadData = `true`;
+                        }else{
+                            this.constructor.messageBoxShow(5000, "error").innerHTML = `${this.lexicon['error_content_for']} ${field}`;
+                            error = true;
+                        }
+                });
             } else {
                 this.constructor.messageBoxShow(5000, "error").innerHTML = `${this.lexicon['error_content_load']}<br>${currentTarget.status}`;
                 error = true;
@@ -147,11 +192,16 @@ class FrontendEditor {
     save() {
         let data = new FormData();
         data.append("action", "update");
-        data.append("id", this.options.id);
+        // data.append(this.options.id + "[id]", this.options.id);
 
         this.editableAreas.forEach(function (el) {
-            if(el.dataset.frontendeditorLoadData)
-                data.append(el.dataset.frontendeditor, encodeURIComponent(el.innerHTML));
+            if(el.dataset.frontendeditorLoadData) {
+                let ResourceId = "r" + el.dataset.frontendeditorResourceId;
+                if (!data.has(ResourceId+ "[id]"))
+                    data.append(ResourceId+ "[id]", el.dataset.frontendeditorResourceId);
+
+                data.append(ResourceId + "[" + el.dataset.frontendeditor + "]", encodeURIComponent(el.innerHTML));
+            }
         });
 
         this._send(data, function({currentTarget}) {
@@ -170,6 +220,10 @@ class FrontendEditor {
         xhr.responseType = 'json';
         xhr.onload = onloadFunction;
         xhr.send(data);
+    }
+
+    _isInt(value) {
+        return !isNaN(value) && (function(x) { return (x | 0) === x; })(parseFloat(value))
     }
 
     static messageBoxShow(timeout = 5000, addclass = "") {

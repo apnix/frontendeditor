@@ -17,3 +17,4 @@ $_lang['frontendeditor.error_resource'] = 'The resource can not be found';
 $_lang['frontendeditor.error_browser_back_compat'] = '<b>Error loading TinyMCE.</b> The browser operates in Quirks Mode. Most likely this is due to the fact that the DOCTYPE tag is missing on the page.';
 $_lang['frontendeditor.see_more'] = 'See more details.';
 $_lang['frontendeditor.error_no_editable_areas'] = 'No areas for editing were found on this page.';
+$_lang['frontendeditor.error_options_format'] = 'Invalid option format:';
