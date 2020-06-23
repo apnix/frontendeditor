@@ -36,6 +36,7 @@ For editing TV fields as attribute value must be specified ```tv-``` in front of
 ```
 
 ####Editor's Choice
+
 For each field, you can specify one of two types of editors: TinyMCE ```tinymce``` (no need to specify by default) or a simple input field ```simple```.
 ```html
 <div data-frontendeditor="tv-myTvField, simple">
@@ -43,6 +44,7 @@ For each field, you can specify one of two types of editors: TinyMCE ```tinymce`
 </div>
 ```
 ####Editing values by resource ID
+
 If you need to edit the fields of another resource, you need to specify its id as the first option. This is especially useful for creating editable menus, breadcrumbs, and other interface elements.
 
 Example of editing of ```pagetitle``` for a resource with id – ```2```
