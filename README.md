@@ -2,7 +2,7 @@
 Frontend Editor is a simple plugin that allows you to edit content without having to log in through the manager interface to do this. It includes TinyMCE 5 for easy editing.
 
 <p align="center">
-  <img src="https://github.com/apnix/frontendeditor/blob/master/_screenlets/screen-1.png?raw=true" alt="Frontend Editor" title="Frontend Editor" style="max-height: 480px;"/>
+  <img src="https://github.com/apnix/frontendeditor/blob/master/_screenlets/screen-1.png?raw=true" alt="Frontend Editor" title="Frontend Editor" height=480px;/>
 </p>
 
 ## Features
