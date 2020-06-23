@@ -1,6 +1,10 @@
 ## Frontend Editor
 Frontend Editor is a simple plugin that allows you to edit content without having to log in through the manager interface to do this. It includes TinyMCE 5 for easy editing.
 
+<p align="center">
+  <img src="https://github.com/apnix/frontendeditor/blob/master/_screenlets/screen-1.png?raw=true" alt="Frontend Editor" title="Frontend Editor" style="max-height: 480px;"/>
+</p>
+
 ## Features
 - Supported editing of document fields including TV fields.
 - Easy image loading without using a resource manager.
@@ -40,7 +44,7 @@ Example of editing of ```pagetitle``` for a resource with id – ```2```
 </a>
 ```
 
-Example of an editable menu::
+Example of an editable menu:
 ```html
 [[pdoMenu?
     &parents=`0`
