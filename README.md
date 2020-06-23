@@ -2,15 +2,50 @@
 Frontend Editor is a simple plugin that allows you to edit content without having to log in through the manager interface to do this. It includes TinyMCE 5 for easy editing.
 
 ## Features
-- In the current version, only editing the content field is supported.
+- Supported editing of document fields including TV fields.
 - Easy image loading without using a resource manager.
+- Editing fields by resource ID (useful for creating editable menus, breadcrumbs, etc.)
 
 ## Installation
-Install the extension. Add the ```data-frontendeditor="content"``` attribute to the element, for example:
+Install the extension. Wrap the fields you want to edit with the tag with attribute ```data-frontendeditor="content"```  specify the field name as the attribute value. For example:
 ```html
 <div data-frontendeditor="content">
     [[*content]]
 </div>
+```
+Available values: ```content, pagetitle, longtitle, menutitle, description, introtext```
+
+#### Editing TV fields
+For editing TV fields as attribute value must be specified ```tv-``` in front of the field name.
+```html
+<div data-frontendeditor="tv-myTvField">
+    [[*myTvField]]
+</div>
+```
+
+####Editor's Choice
+For each field, you can specify one of two types of editors: TinyMCE ```tinymce``` (no need to specify by default) or a simple input field ```simple```.
+```html
+<div data-frontendeditor="tv-myTvField, simple">
+    [[*myTvField]]
+</div>
+```
+####Editing values by resource ID
+If you need to edit the fields of another resource, you need to specify its id as the first option. This is especially useful for creating editable menus, breadcrumbs, and other interface elements.
+
+Example of editing of ```pagetitle``` for a resource with id – ```2```
+```html
+<a href="/index.php?id=2" data-frontendeditor="2, pagetitle, simple">
+    [[pdoField?&id=`2`&field=`pagetitle`]]
+</a>
+```
+
+Example of an editable menu::
+```html
+[[pdoMenu?
+    &parents=`0`
+    &tpl=`@INLINE <li><a href="[[+link]]" data-frontendeditor="[[+id]], menutitle, simple">[[+menutitle]]</a>[[+wrapper]]</li>`
+]]
 ```
 
 ## Additional settings
@@ -30,10 +65,11 @@ Install the extension. Add the ```data-frontendeditor="content"``` attribute to 
 ___
 Frontend Editor это простой плагин который позволяет редактировать контент не заходя в админ панель. Он включает в себя TinyMCE 5 для удобного редактирования.
 
-## Особенности
+## Возможности
 - Поддерживается редактирование полей документа включая TV поля.
 - Простая загрузка изображений без использования менеджера ресурсов.
 - Редактирование полей по ID ресурса (полезно для создания редактируемых, меню, breadcrumbs и т.д.)
+
 
 ## Установка и использование
 Установите расширение. Оберните поля которые хотите редактировать тегом с атрибутом ```data-frontendeditor``` в качестве значения атрибута укажите название поля. Например так:

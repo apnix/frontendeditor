@@ -1,3 +1,9 @@
+Frontend Editor v1.2
+==============
+- Supported editing TV fields.
+- Editing fields by resource ID (useful for creating editable menus, breadcrumbs, etc.)
+- Editing fields support added: pagetitle, longtitle, menutitle, description, introtext
+
 Frontend Editor v1.04
 ==============
 - Bug fixes
