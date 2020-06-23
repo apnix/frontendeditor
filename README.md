@@ -10,6 +10,14 @@ Frontend Editor is a simple plugin that allows you to edit content without havin
 - Easy image loading without using a resource manager.
 - Editing fields by resource ID (useful for creating editable menus, breadcrumbs, etc.)
 
+## Screenshots
+
+<p align="center">
+  <img src="https://github.com/apnix/frontendeditor/blob/master/_screenlets/screen-2.png?raw=true" alt="Frontend Editor" title="Frontend Editor" height=300px;/> 
+  <img src="https://github.com/apnix/frontendeditor/blob/master/_screenlets/screen-3.png?raw=true" alt="Frontend Editor" title="Frontend Editor" height=300px;/> 
+  <img src="https://github.com/apnix/frontendeditor/blob/master/_screenlets/screen-4.png?raw=true" alt="Frontend Editor" title="Frontend Editor" height=300px;/> 
+</p>
+
 ## Installation
 Install the extension. Wrap the fields you want to edit with the tag with attribute ```data-frontendeditor="content"```  specify the field name as the attribute value. For example:
 ```html
