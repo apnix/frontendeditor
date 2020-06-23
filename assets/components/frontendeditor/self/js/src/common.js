@@ -58,8 +58,11 @@ class FrontendEditor {
             }else{
                 el.dataset.frontendeditorResourceId = this.options.id;
                 el.dataset.frontendeditor = firstOption;
-                if (1 in options)
+                el.title = `Filed: ${firstOption}`;
+
+                if (1 in options) {
                     el.dataset.frontendeditorEditor = options[1].trim();
+                }
             }
 
 
@@ -79,7 +82,6 @@ class FrontendEditor {
                             if (elin.dataset.frontendeditor === elout.dataset.frontendeditor)
                                 elout.textContent = elin.textContent;
                         }
-
                 });
             }.bind(fe, elin);
         });
@@ -98,6 +100,7 @@ class FrontendEditor {
 
         data.append("process", $process);
 
+
         this._send(data, function ({currentTarget}) {
             let error = false;
             if (currentTarget.status === 200 && currentTarget.response.success) {
@@ -110,6 +113,14 @@ class FrontendEditor {
                     if (field in objects[id]) {
                         if((this.options.menutitleBehavior === '1' || this.options.menutitleBehavior === '2') && field === 'menutitle' && objects[id]['menutitle'] === '') {
                             el.dataset.linked = 'pagetitle';
+
+                            if(this.options.menutitleBehavior === '2')
+                                if(el.dataset.frontendeditorResourceId !== this.options.id) {
+                                    el.title = `ID: ${el.dataset.frontendeditorResourceId} Filed: ${field} -> ${el.dataset.linked}`;
+                                }else{
+                                    el.title = `Filed: ${field} -> ${el.dataset.linked}`;
+                                }
+
                             this.editableAreas.forEach((elp) => {
                                 if(elp.dataset.frontendeditorResourceId === el.dataset.frontendeditorResourceId && elp.dataset.frontendeditor === el.dataset.linked) {
                                     elp.dataset.linked = 'menutitle';
