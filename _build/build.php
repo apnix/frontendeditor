@@ -155,7 +155,8 @@ $builder->setPackageAttributes([
     'readme' => file_get_contents(dirname(dirname(__FILE__)) . '/core/components/frontendeditor/docs/readme.txt'),
 ]);
 
-$builder->pack();
+if($builder->pack())
+    echo  "Completed: " . $builder->directory . $builder->filename . "\r\n";
 
 if($config['install']){
     $signature = $builder->getSignature();
