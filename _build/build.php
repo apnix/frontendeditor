@@ -43,6 +43,11 @@ $config =  [
             'value' => "images/Article Pictures/",
             'area' => 'frontendeditor',
         ],
+        'menutitle_behavior' => [
+            'xtype' => 'textfield',
+            'value' => "1",
+            'area' => 'frontendeditor',
+        ],
         'update' => true
     ]
 
