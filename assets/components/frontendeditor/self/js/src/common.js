@@ -71,9 +71,15 @@ class FrontendEditor {
             const fe = this;
             elin.oninput = function() {
                 fe.editableAreas.forEach((elout) => {
-                    if(elin.dataset.frontendeditorResourceId === elout.dataset.frontendeditorResourceId && elin.dataset.frontendeditor === elout.dataset.frontendeditor){
-                        elout.textContent = elin.textContent;
-                    }
+                    if(elin.dataset.frontendeditorResourceId === elout.dataset.frontendeditorResourceId)
+                        if(this.options.menutitleBehavior === '2' && 'linked' in elin.dataset) {
+                            if (elout.dataset.frontendeditor === elin.dataset.linked || elin.dataset.frontendeditor === elout.dataset.frontendeditor)
+                                elout.textContent = elin.textContent;
+                        } else {
+                            if (elin.dataset.frontendeditor === elout.dataset.frontendeditor)
+                                elout.textContent = elin.textContent;
+                        }
+
                 });
             }.bind(fe, elin);
         });
@@ -98,16 +104,27 @@ class FrontendEditor {
                 let objects = currentTarget.response.object;
                 this.editableAreas.forEach((el) => {
                     el.id = this.constructor.generateUUID();
-                        let id = el.dataset.frontendeditorResourceId;
-                        let field = el.dataset.frontendeditor;
+                    let id = el.dataset.frontendeditorResourceId;
+                    let field = el.dataset.frontendeditor;
 
-                        if (field in objects[id]) {
-                            el.innerHTML = objects[id][field];
-                            el.dataset.frontendeditorLoadData = `true`;
-                        }else{
-                            this.constructor.messageBoxShow(5000, "error").innerHTML = `${this.lexicon['error_content_for']} ${field}`;
-                            error = true;
+                    if (field in objects[id]) {
+                        if((this.options.menutitleBehavior === '1' || this.options.menutitleBehavior === '2') && field === 'menutitle' && objects[id]['menutitle'] === '') {
+                            el.dataset.linked = 'pagetitle';
+                            this.editableAreas.forEach((elp) => {
+                                if(elp.dataset.frontendeditorResourceId === el.dataset.frontendeditorResourceId && elp.dataset.frontendeditor === el.dataset.linked) {
+                                    elp.dataset.linked = 'menutitle';
+                                }
+                            });
                         }
+                        if('linked' in el.dataset && objects[id]['pagetitle'] !== '')
+                            el.innerHTML = objects[id]['pagetitle'];
+                        else
+                            el.innerHTML = objects[id][field];
+                        el.dataset.frontendeditorLoadData = `true`;
+                    }else{
+                        this.constructor.messageBoxShow(5000, "error").innerHTML = `${this.lexicon['error_content_for']} ${field}`;
+                        error = true;
+                    }
                 });
             } else {
                 this.constructor.messageBoxShow(5000, "error").innerHTML = `${this.lexicon['error_content_load']}<br>${currentTarget.status}`;
@@ -193,15 +210,15 @@ class FrontendEditor {
     save() {
         let data = new FormData();
         data.append("action", "update");
-        // data.append(this.options.id + "[id]", this.options.id);
 
-        this.editableAreas.forEach(function (el) {
+        this.editableAreas.forEach((el) => {
             if(el.dataset.frontendeditorLoadData) {
                 let ResourceId = "r" + el.dataset.frontendeditorResourceId;
                 if (!data.has(ResourceId+ "[id]"))
                     data.append(ResourceId+ "[id]", el.dataset.frontendeditorResourceId);
 
-                data.append(ResourceId + "[" + el.dataset.frontendeditor + "]", encodeURIComponent(el.innerHTML));
+                if(!(this.options.menutitleBehavior === '2' && el.dataset.frontendeditor === 'menutitle'))
+                    data.append(ResourceId + "[" + el.dataset.frontendeditor + "]", encodeURIComponent(el.innerHTML));
             }
         });
 

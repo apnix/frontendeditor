@@ -29,6 +29,7 @@ if($modx->user->isAuthenticated('mgr')){
                 lang: "' . $lang . '",
                 editPermission: "' . $modx->hasPermission('edit_document') . '",
                 tinymceConfig: "' . htmlspecialchars($modx->getOption('frontendeditor.tinymce_init_default', null, false)) . '",
+                menutitleBehavior: "' . htmlspecialchars($modx->getOption('frontendeditor.menutitle_behavior', null, '1')) . '",
             }
             , ' . $modx->toJSON($lexicon) . ')
         
