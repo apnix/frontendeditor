@@ -46,14 +46,23 @@ Example of an editable menu::
     &tpl=`@INLINE <li><a href="[[+link]]" data-frontendeditor="[[+id]], menutitle, simple">[[+menutitle]]</a>[[+wrapper]]</li>`
 ]]
 
+## Field menutitle
+For editable fields menutitle if they are empty special behavior are provided. They are filled with the value from pagetitle, and the result is saved in menutitle. These behavior can be changed, see advanced settings.
+
 ADDITIONAL SETTINGS
 frontendeditor.tinymce_init_default - TinyMCE configuration settings. For more details see TinyMCE 5.0 Documentation
-frontendeditor.upload_path - image upload directory
-frontendeditor.upload_file_name - processing the file name, can take the following values:
 
-empty (by default) - does nothing;
+frontendeditor.upload_path - image upload directory
+
+frontendeditor.upload_file_name - processing the file name, can take the following values:
+empty (by default) - does nothing
 sanitize - removes the characters $-+!*'(),{}|\\^~[]`<>#%\";/?:@&="
 uniqid - generates a unique name such as 5db365920976f.png
+
+frontendeditor.menutitle_behavior - editor behavior for empty menutitle fields. It can take the following values:
+0 - the editor works with empty menutitle as well as with other fields.
+1 (default) - Empty menutitle field is substituted with the value from pagetitle and the result is saved in  menutitle.
+2 - Empty menutitle field is substituted with the value from pagetitle and the result is saved in pagetitle.
 
 SYSTEM REQUIREMENTS
 On those pages where you are going to use the editor, DOCTYPE should be indicated such as: <!DOCTYPE html>
@@ -103,14 +112,23 @@ GitHub: https://github.com/apnix/frontendeditor
     &tpl=`@INLINE <li><a href="[[+link]]" data-frontendeditor="[[+id]], menutitle, simple">[[+menutitle]]</a>[[+wrapper]]</li>`
 ]]
 
+## Поле menutitle
+Для редактируемых полей menutitle если они пусты предусмотрено особое поведение. В них подставляется значение из pagetitle, а результат сохраняются в menutitle. Это поведение можно изменить см. дополнительные настройки.
+
 ДОПОЛНИТЕЛЬНЫЕ НАСТРОЙКИ
 frontendeditor.tinymce_init_default - конфигурация TinyMCE подробнее смотрите документацию TinyMCE 5.0
-frontendeditor.upload_path - директория загрузки изображений
-frontendeditor.upload_file_name - обработка имени файла, может принимать следующие значения:
 
-пусто(по умолчанию) - ничего не делает;
+frontendeditor.upload_path - директория загрузки изображений
+
+frontendeditor.upload_file_name - обработка имени файла, может принимать следующие значения:
+пусто(по умолчанию) - ничего не делает
 sanitize - удаляет символы $-+!*'(),{}|\\^~[]`<>#%\";/?:@&=
 uniqid - генерирует уникальное имя вида 5db365920976f.png
+
+frontendeditor.menutitle_behavior - поведение редактора для пустых полей menutitle. Может принимать следующие значения:
+0 - редактор работает с пустыми menutitle так же как и с остальными полями.
+1(по умолчанию) - В пустые поля menutitle подставляется значение из pagetitle, а сохраняются menutitle.
+2 - В пустые поля menutitle подставляется значение из pagetitle и сохраняются pagetitle.
 
 СИСТЕМНЫЕ ТРЕБОВАНИЯ
 На тех страницах где вы собираетесь использовать редактор должен быть указан DOCTYPE такой как: <!DOCTYPE html>
