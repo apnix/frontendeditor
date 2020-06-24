@@ -15,6 +15,7 @@ class FrontendEditor {
     init(frontendEditorOptions, frontendEditorLexicon){
         this.options = frontendEditorOptions;
         this.lexicon = frontendEditorLexicon;
+        this.state = {};
 
         if(this.options.editPermission !== `1`){
             document.querySelector(`.frontendeditor-button-edit`).disabled = true;
@@ -132,9 +133,11 @@ class FrontendEditor {
                         else
                             el.innerHTML = objects[id][field];
                         el.dataset.frontendeditorLoadData = `true`;
+                        this.state[el.id] = el.innerHTML;
                     }else{
                         this.constructor.messageBoxShow(5000, "error").innerHTML = `${this.lexicon['error_content_for']} ${field}`;
                         error = true;
+                        this.state[el.id] = null;
                     }
                 });
             } else {
@@ -223,13 +226,16 @@ class FrontendEditor {
         data.append("action", "update");
 
         this.editableAreas.forEach((el) => {
-            if(el.dataset.frontendeditorLoadData) {
+            if(el.dataset.frontendeditorLoadData && this.state[el.id] !== null && this.state[el.id] !== el.innerHTML) {
                 let ResourceId = "r" + el.dataset.frontendeditorResourceId;
                 if (!data.has(ResourceId+ "[id]"))
                     data.append(ResourceId+ "[id]", el.dataset.frontendeditorResourceId);
 
                 if(!(this.options.menutitleBehavior === '2' && el.dataset.frontendeditor === 'menutitle'))
-                    data.append(ResourceId + "[" + el.dataset.frontendeditor + "]", encodeURIComponent(el.innerHTML));
+                    if (!data.has(ResourceId + "[" + el.dataset.frontendeditor + "]"))
+                        data.append(ResourceId + "[" + el.dataset.frontendeditor + "]", encodeURIComponent(el.innerHTML));
+
+                this.state[el.id] = el.innerHTML;
             }
         });
 

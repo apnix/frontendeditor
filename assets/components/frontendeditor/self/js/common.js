@@ -21,6 +21,7 @@ var FrontendEditor = function () {
         value: function init(frontendEditorOptions, frontendEditorLexicon) {
             this.options = frontendEditorOptions;
             this.lexicon = frontendEditorLexicon;
+            this.state = {};
 
             if (this.options.editPermission !== '1') {
                 document.querySelector('.frontendeditor-button-edit').disabled = true;
@@ -141,9 +142,11 @@ var FrontendEditor = function () {
                             }
                             if ('linked' in el.dataset && objects[id]['pagetitle'] !== '') el.innerHTML = objects[id]['pagetitle'];else el.innerHTML = objects[id][field];
                             el.dataset.frontendeditorLoadData = 'true';
+                            _this4.state[el.id] = el.innerHTML;
                         } else {
                             _this4.constructor.messageBoxShow(5000, "error").innerHTML = _this4.lexicon['error_content_for'] + ' ' + field;
                             error = true;
+                            _this4.state[el.id] = null;
                         }
                     });
                 } else {
@@ -235,11 +238,13 @@ var FrontendEditor = function () {
             data.append("action", "update");
 
             this.editableAreas.forEach(function (el) {
-                if (el.dataset.frontendeditorLoadData) {
+                if (el.dataset.frontendeditorLoadData && _this5.state[el.id] !== null && _this5.state[el.id] !== el.innerHTML) {
                     var ResourceId = "r" + el.dataset.frontendeditorResourceId;
                     if (!data.has(ResourceId + "[id]")) data.append(ResourceId + "[id]", el.dataset.frontendeditorResourceId);
 
-                    if (!(_this5.options.menutitleBehavior === '2' && el.dataset.frontendeditor === 'menutitle')) data.append(ResourceId + "[" + el.dataset.frontendeditor + "]", encodeURIComponent(el.innerHTML));
+                    if (!(_this5.options.menutitleBehavior === '2' && el.dataset.frontendeditor === 'menutitle')) if (!data.has(ResourceId + "[" + el.dataset.frontendeditor + "]")) data.append(ResourceId + "[" + el.dataset.frontendeditor + "]", encodeURIComponent(el.innerHTML));
+
+                    _this5.state[el.id] = el.innerHTML;
                 }
             });
 
