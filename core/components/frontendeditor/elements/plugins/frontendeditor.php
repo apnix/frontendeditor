@@ -13,11 +13,11 @@ if($modx->user->isAuthenticated('mgr')){
     $lexicon = $modx->lexicon->fetch('frontendeditor.', true);
 
     $scriptHtml = '
-        <link href="'.$frontendeditorAssetsPath.'fontawesome-free/css/all.min.css" rel="stylesheet">
-        <link href="'.$frontendeditorAssetsPath.'self/css/common.css" rel="stylesheet">
+        <link href="'.$frontendeditorAssetsPath.'fontawesome-free/css/all.min.css?v=5.11.2" rel="stylesheet">
+        <link href="'.$frontendeditorAssetsPath.'self/css/common.css?v=1.1.3" rel="stylesheet">
         
-        <script type="text/javascript" src="'.$frontendeditorAssetsPath.'tinymce/tinymce.js"></script>
-        <script type="text/javascript" src="'.$frontendeditorAssetsPath.'self/js/common.js"></script>
+        <script type="text/javascript" src="'.$frontendeditorAssetsPath.'tinymce/tinymce.js?v=5.0.16"></script>
+        <script type="text/javascript" src="'.$frontendeditorAssetsPath.'self/js/common.js?v=1.1.3"></script>
 
         <script type="text/javascript">
           document.addEventListener("DOMContentLoaded", function() {
