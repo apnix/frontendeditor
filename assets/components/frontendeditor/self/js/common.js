@@ -86,9 +86,9 @@ var FrontendEditor = function () {
 
                     fe.editableAreas.forEach(function (elout) {
                         if (elin.dataset.frontendeditorResourceId === elout.dataset.frontendeditorResourceId) if (_this3.options.menutitleBehavior === '2' && 'linked' in elin.dataset) {
-                            if (elout.dataset.frontendeditor === elin.dataset.linked || elin.dataset.frontendeditor === elout.dataset.frontendeditor) elout.textContent = elin.textContent;
+                            if ((elout.dataset.frontendeditor === elin.dataset.linked || elin.dataset.frontendeditor === elout.dataset.frontendeditor) && elin !== elout) elout.innerHTML = elin.innerHTML;
                         } else {
-                            if (elin.dataset.frontendeditor === elout.dataset.frontendeditor) elout.textContent = elin.textContent;
+                            if (elin.dataset.frontendeditor === elout.dataset.frontendeditor && elin !== elout) elout.innerHTML = elin.innerHTML;
                         }
                     });
                 }.bind(fe, elin);
