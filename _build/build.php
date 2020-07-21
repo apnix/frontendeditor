@@ -129,7 +129,9 @@ $attributes = [
     xPDOTransport::UPDATE_OBJECT => !empty($config['settings']['update']),
     xPDOTransport::RELATED_OBJECTS => false,
 ];
+
 foreach ($config['settings'] as $name => $data) {
+    if($name == "update") continue;
     $setting = $modx->newObject('modSystemSetting');
     $setting->fromArray(array_merge([
         'key' => $config['name_lower'] . '.' . $name,
