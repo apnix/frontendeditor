@@ -1,3 +1,7 @@
+Frontend Editor v1.1.4
+==============
+- Fixed error uninstalling package
+
 Frontend Editor v1.1.3
 ==============
 - Added behavior for empty menutitle field.
