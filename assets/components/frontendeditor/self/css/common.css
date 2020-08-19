@@ -151,3 +151,7 @@ body.frontendeditor-areas-highlight a[data-frontendeditor-load-data=true]:focus,
 body.frontendeditor-areas-highlight a[data-frontendeditor-load-data=true]:hover {
     text-decoration: none;
 }
+
+body.frontendeditor-areas-highlight .tox-tinymce {
+    z-index: 99999;
+}
