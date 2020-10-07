@@ -78,8 +78,6 @@ For editable fields menutitle if they are empty special behavior are provided. T
 * 1 (default) - Empty menutitle field is substituted with the value from pagetitle and the result is saved in  menutitle.
 * 2 - Empty menutitle field is substituted with the value from pagetitle and the result is saved in pagetitle.
 
-```frontendeditor.media_source_id``` - default file source id for the MODX resource browser.
-
 ## System Requirements
 * On those pages where you are going to use the editor, DOCTYPE should be indicated such as: <!DOCTYPE html>
 * TinyMCE 5 should support your browser: https://www.tiny.cloud/docs/general-configuration-guide/system-requirements
@@ -153,8 +151,6 @@ Frontend Editor это простой плагин который позволя
 * 0 - редактор работает с пустыми menutitle так же как и с остальными полями.
 * 1(по умолчанию) - В пустые поля menutitle подставляется значение из pagetitle, а сохраняются menutitle.
 * 2 - В пустые поля menutitle подставляется значение из pagetitle и сохраняются pagetitle.
-
-```frontendeditor.media_source_id``` - id источника файлов для браузера ресурсов которое будет использоваться по умолчанию.
 
 ## Системные требования
 * На тех страницах где вы собираетесь использовать редактор должен быть указан DOCTYPE такой как: <!DOCTYPE html>

@@ -64,8 +64,6 @@ frontendeditor.menutitle_behavior - editor behavior for empty menutitle fields. 
 1 (default) - Empty menutitle field is substituted with the value from pagetitle and the result is saved in  menutitle.
 2 - Empty menutitle field is substituted with the value from pagetitle and the result is saved in pagetitle.
 
-media_source_id - default file source id for the MODX resource browser.
-
 SYSTEM REQUIREMENTS
 On those pages where you are going to use the editor, DOCTYPE should be indicated such as: <!DOCTYPE html>
 TinyMCE 5 should support your browser: https://www.tiny.cloud/docs/general-configuration-guide/system-requirements
@@ -131,8 +129,6 @@ frontendeditor.menutitle_behavior - поведение редактора для
 0 - редактор работает с пустыми menutitle так же как и с остальными полями.
 1(по умолчанию) - В пустые поля menutitle подставляется значение из pagetitle, а сохраняются menutitle.
 2 - В пустые поля menutitle подставляется значение из pagetitle и сохраняются pagetitle.
-
-frontendeditor.media_source_id - id источника файлов для браузера ресурсов которое будет использоваться по умолчанию.
 
 СИСТЕМНЫЕ ТРЕБОВАНИЯ
 На тех страницах где вы собираетесь использовать редактор должен быть указан DOCTYPE такой как: <!DOCTYPE html>

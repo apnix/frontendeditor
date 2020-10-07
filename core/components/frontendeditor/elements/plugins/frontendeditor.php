@@ -30,7 +30,6 @@ if($modx->user->isAuthenticated('mgr')){
                 editPermission: "' . $modx->hasPermission('edit_document') . '",
                 tinymceConfig: "' . htmlspecialchars($modx->getOption('frontendeditor.tinymce_init_default', null, false)) . '",
                 menutitleBehavior: "' . htmlspecialchars($modx->getOption('frontendeditor.menutitle_behavior', null, '1')) . '",
-                media: "'. htmlspecialchars($modx->getOption('frontendeditor.media_source_id', null, '')) . '",
             }
             , ' . $modx->toJSON($lexicon) . ')
         

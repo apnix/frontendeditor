@@ -59,13 +59,6 @@ $config =  [
             'area' => 'frontendeditor',
             'update' => true
         ],
-        'media_source_id' => [
-            'xtype' => 'textfield',
-            'value' => "",
-            'area' => 'frontendeditor',
-            'update' => true
-        ],
-
     ]
 
 ];
