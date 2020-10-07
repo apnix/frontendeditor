@@ -1,4 +1,4 @@
-Frontend Editor v1.2
+Frontend Editor v1.2.1
 ==============
 - Added capacity to attach images from MODX media browser.
 - Fixed bugs.

@@ -14,10 +14,10 @@ if($modx->user->isAuthenticated('mgr')){
 
     $scriptHtml = '
         <link href="'.$frontendeditorAssetsPath.'fontawesome-free/css/all.min.css?v=5.11.2" rel="stylesheet">
-        <link href="'.$frontendeditorAssetsPath.'self/css/common.css?v=1.2" rel="stylesheet">
+        <link href="'.$frontendeditorAssetsPath.'self/css/common.css?v=1.2.1" rel="stylesheet">
         
         <script type="text/javascript" src="'.$frontendeditorAssetsPath.'tinymce/tinymce.js?v=5.0.16"></script>
-        <script type="text/javascript" src="'.$frontendeditorAssetsPath.'self/js/common.js?v=1.2"></script>
+        <script type="text/javascript" src="'.$frontendeditorAssetsPath.'self/js/common.js?v=1.2.1"></script>
 
         <script type="text/javascript">
           document.addEventListener("DOMContentLoaded", function() {
