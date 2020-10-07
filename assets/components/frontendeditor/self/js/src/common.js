@@ -296,7 +296,7 @@ class FrontendEditor {
             file_picker_callback: function(callback, url, type) {
                 tinymce.activeEditor.windowManager.openUrl({
                     title: "MODX Resource Browser",
-                    url: '/manager/index.php?a=browser'+ (fe.options.media !== "" ? '&source=' + fe.options.madia : '') +'&frontendeditor=1',
+                    url: '/manager/index.php?a=browser'+ (fe.options.media !== "" ? '&source=' + fe.options.media : '') +'&frontendeditor=1',
                     onMessage: function (api, data) {
                         if (data.mceAction === 'browserSelectCompleted') {
                             callback(data.url);
