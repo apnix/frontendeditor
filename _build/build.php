@@ -39,28 +39,33 @@ $config =  [
             'xtype' => 'textfield',
             'value' => "{\"menubar\":true,\"image_title\":true,\"image_caption\":true,\"convert_urls\":false,\"inline\":true,\"browser_spellcheck\":true,\"contextmenu\":false,\"plugins\":[\"wordcount table lists link media autolink image imagetools codesample code paste\"],\"toolbar\":\"undo redo | bold italic | forecolor backcolor | codesample |  alignleft aligncenter alignright alignjustify | bullist numlist | link unlink | image insert | code \",\"imagetools_toolbar\":\" editimage | imageoptions\"}",
             'area' => 'frontendeditor',
+            'update' => false
         ],
         'upload_file_name' => [
             'xtype' => 'textfield',
             'value' => "",
             'area' => 'frontendeditor',
+            'update' => true
         ],
         'upload_path' => [
             'xtype' => 'textfield',
             'value' => "images/Article Pictures/",
             'area' => 'frontendeditor',
+            'update' => true
         ],
         'menutitle_behavior' => [
             'xtype' => 'textfield',
             'value' => "1",
             'area' => 'frontendeditor',
+            'update' => true
         ],
         'media_source_id' => [
             'xtype' => 'textfield',
             'value' => "",
             'area' => 'frontendeditor',
+            'update' => true
         ],
-        'update' => true
+
     ]
 
 ];
@@ -135,21 +140,20 @@ foreach ($config['plugins']['plugins'] as $name => $data) {
 $category->addMany($objects);
 
 
-$attributes = [
-    xPDOTransport::UNIQUE_KEY => 'key',
-    xPDOTransport::PRESERVE_KEYS => true,
-    xPDOTransport::UPDATE_OBJECT => !empty($config['settings']['update']),
-    xPDOTransport::RELATED_OBJECTS => false,
-];
-
 foreach ($config['settings'] as $name => $data) {
-    if($name == "update") continue;
+    $update = $data['update'];
+    unset($data['update']);
     $setting = $modx->newObject('modSystemSetting');
     $setting->fromArray(array_merge([
         'key' => $config['name_lower'] . '.' . $name,
         'namespace' => $config['name_lower'],
     ], $data), '', true, true);
-    $vehicle = $builder->createVehicle($setting, $attributes);
+    $vehicle = $builder->createVehicle($setting, [
+        xPDOTransport::UNIQUE_KEY => 'key',
+        xPDOTransport::PRESERVE_KEYS => true,
+        xPDOTransport::UPDATE_OBJECT => $update,
+        xPDOTransport::RELATED_OBJECTS => false,
+    ]);
     $builder->putVehicle($vehicle);
 }
 
