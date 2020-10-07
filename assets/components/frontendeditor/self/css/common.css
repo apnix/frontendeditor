@@ -153,5 +153,5 @@ body.frontendeditor-areas-highlight a[data-frontendeditor-load-data=true]:hover 
 }
 
 body.frontendeditor-areas-highlight .tox-tinymce {
-    z-index: 99999;
+    z-index: 1299;
 }
