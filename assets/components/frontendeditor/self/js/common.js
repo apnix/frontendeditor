@@ -313,6 +313,20 @@ var FrontendEditor = function () {
                             failure('Error: ' + currentTarget.response.message);
                         }
                     }.bind(this));
+                },
+                file_picker_types: 'image',
+                file_picker_callback: function file_picker_callback(callback, url, type) {
+                    tinymce.activeEditor.windowManager.openUrl({
+                        title: "MODX Resource Browser",
+                        url: '/manager/index.php?a=browser' + (fe.options.media !== "" ? '&source=' + fe.options.madia : '') + '&frontendeditor=1',
+                        onMessage: function onMessage(api, data) {
+                            if (data.mceAction === 'browserSelectCompleted') {
+                                callback(data.url);
+                                api.close();
+                            }
+                        }
+                    });
+                    return false;
                 }
             };
 

@@ -24,7 +24,14 @@ $config =  [
                 'events' => [
                     'OnWebPagePrerender' => [],
                 ],
-            ]
+            ],
+            'FrontendEditorEventBrowserInit' => [
+                'file' => 'FrontendEditorEventBrowserInit',
+                'description' => '',
+                'events' => [
+                    'OnRichTextBrowserInit' => [],
+                ],
+            ],
         ]
     ],
     'settings' =>[
