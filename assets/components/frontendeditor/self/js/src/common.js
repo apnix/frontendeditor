@@ -292,6 +292,20 @@ class FrontendEditor {
                     }
                 }.bind(this));
             },
+            file_picker_types: 'image',
+            file_picker_callback: function(callback, url, type) {
+                tinymce.activeEditor.windowManager.openUrl({
+                    title: "MODX Resource Browser",
+                    url: '/manager/index.php?a=browser&frontendeditor=1',
+                    onMessage: function (api, data) {
+                        if (data.mceAction === 'browserSelectCompleted') {
+                            callback(data.url);
+                            api.close();
+                        }
+                    }
+                });
+                return false;
+            }
         };
 
         if(fe.options.tinymceConfig) {
