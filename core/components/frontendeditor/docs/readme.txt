@@ -1,7 +1,7 @@
 ---------------------------------------
-Frontend Editor v1.1.4
+Frontend Editor v1.2
 ---------------------------------------
-Version: 1.1.4
+Version: 1.2
 Author: Artemiy Titov <arien85@gmail.com>
 ---------------------------------------
 
@@ -63,6 +63,8 @@ frontendeditor.menutitle_behavior - editor behavior for empty menutitle fields. 
 0 - the editor works with empty menutitle as well as with other fields.
 1 (default) - Empty menutitle field is substituted with the value from pagetitle and the result is saved in  menutitle.
 2 - Empty menutitle field is substituted with the value from pagetitle and the result is saved in pagetitle.
+
+media_source_id - default file source id for the MODX resource browser.
 
 SYSTEM REQUIREMENTS
 On those pages where you are going to use the editor, DOCTYPE should be indicated such as: <!DOCTYPE html>
@@ -129,6 +131,8 @@ frontendeditor.menutitle_behavior - поведение редактора для
 0 - редактор работает с пустыми menutitle так же как и с остальными полями.
 1(по умолчанию) - В пустые поля menutitle подставляется значение из pagetitle, а сохраняются menutitle.
 2 - В пустые поля menutitle подставляется значение из pagetitle и сохраняются pagetitle.
+
+media_source_id - id источника файлов для браузера ресурсов которое будет использоваться по умолчанию.
 
 СИСТЕМНЫЕ ТРЕБОВАНИЯ
 На тех страницах где вы собираетесь использовать редактор должен быть указан DOCTYPE такой как: <!DOCTYPE html>

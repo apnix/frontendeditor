@@ -1,3 +1,8 @@
+Frontend Editor v1.2
+==============
+- Added capacity to attach images from MODX media browser.
+- Fixed bugs.
+
 Frontend Editor v1.1.4
 ==============
 - Fixed error uninstalling package

@@ -10,7 +10,7 @@ $config =  [
 
     'name' => 'Frontend Editor',
     'name_lower' => 'frontendeditor',
-    'version' => '1.1.4',
+    'version' => '1.2',
     'release' => 'pl',
     'install' => false,
 
@@ -53,6 +53,11 @@ $config =  [
         'menutitle_behavior' => [
             'xtype' => 'textfield',
             'value' => "1",
+            'area' => 'frontendeditor',
+        ],
+        'media_source_id' => [
+            'xtype' => 'textfield',
+            'value' => "",
             'area' => 'frontendeditor',
         ],
         'update' => true
