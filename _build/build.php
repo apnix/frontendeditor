@@ -6,11 +6,11 @@
  */
 
 $config =  [
-    'modx_core' => '/var/www/modx.local/core/',
+    'modx_core' => '/var/www/html/core/',
 
     'name' => 'Frontend Editor',
     'name_lower' => 'frontendeditor',
-    'version' => '1.2.2',
+    'version' => '1.3.0',
     'release' => 'pl',
     'install' => false,
 

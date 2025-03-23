@@ -1,11 +1,16 @@
+Frontend Editor v1.3.0
+==============
+- MODX 3 compatibility
+- Add Polish lexicon
+
 Frontend Editor v1.2.2
 ==============
-- Fixed bugs.
+- Fixed bugs
 
 Frontend Editor v1.2.1
 ==============
-- Added capacity to attach images from MODX media browser.
-- Fixed bugs.
+- Added capacity to attach images from MODX media browser
+- Fixed bugs
 
 Frontend Editor v1.1.4
 ==============
@@ -13,7 +18,7 @@ Frontend Editor v1.1.4
 
 Frontend Editor v1.1.3
 ==============
-- Added behavior for empty menutitle field.
+- Added behavior for empty menutitle field
 - Fixed bugs
 - Performance improvements
 
@@ -34,5 +39,5 @@ Frontend Editor v1.03
 
 Frontend Editor v1.0
 ==============
-- Initial release.
+- Initial release
 
